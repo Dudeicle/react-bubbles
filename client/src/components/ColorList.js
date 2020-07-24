@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 import { axiosWithAuth } from '../axiosAuth/axiosWithAuth';
-import e from 'express';
 
 const initialColor = {
 	color: '',
@@ -15,7 +14,7 @@ const ColorList = ({ colors, updateColors }) => {
 
 	useEffect(() => {
 		setColorList(colors);
-	});
+	}, []);
 
 	const editColor = (color) => {
 		setEditing(true);
@@ -37,13 +36,12 @@ const ColorList = ({ colors, updateColors }) => {
 
 	const deleteColor = (color) => {
 		// make a delete request to delete this color
-		e.preventDefualt();
-		// axiosWithAuth()
-		// 	.put('')
-		// 	.then((res) => {
-		// 		console.log(res);
-		// 	})
-		// 	.catch((err) => console.log({ err }));
+		axiosWithAuth()
+			.put('')
+			.then((res) => {
+				console.log(res);
+			})
+			.catch((err) => console.log({ err }));
 	};
 
 	return (
